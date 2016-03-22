@@ -1,0 +1,36 @@
+﻿<!-- This is the side menu -->
+
+<div class="col-sm-3 sidebar-nav">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="visible-xs navbar-brand">Menu</span>
+        </div>
+
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+            <ul class="nav navbar-nav" ng-controller="SideMenuCtrl">
+                <li ng-repeat="item in MenuContent" class="{{activeClassString(item)}}">
+                    <a href="{{item.title.link}}" ng-click="item.expanded = !item.expanded">
+                        {{item.title.text}}
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="nav navbar-nav submenu-item" ng-if="item.expanded" ng-repeat="subitem in item.subitems">
+                        <li><a href="{{subitem.link}}">{{subitem.text}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<div ng-controller="SideMenuCtrl">
+    {{ MenuContent | json}}
+</div>-->
